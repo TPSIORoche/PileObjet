@@ -34,7 +34,7 @@ namespace MesOutils
 
         public bool PilePleine()
         {
-            return this.elements.Count-1 == this.nbMaxElt;
+            return this.elements.Count - 1 == this.nbMaxElt;
         }
 
         public void Empiler(int nb)
@@ -51,10 +51,13 @@ namespace MesOutils
 
         public int Depiler()
         {
-            int res = (int)this.elements[elements.Count - 1];
-            this.elements.RemoveAt(this.elements.Count - 1);
-            return res;
+            if (!(this.PileVide()))
+            {
+                int res = (int)this.elements[elements.Count - 1];
+                this.elements.RemoveAt(this.elements.Count - 1);
+                return res;
+            }
+            throw new Exception("Impossible de dépiler,pile vide");
         }
-            
     }
 }

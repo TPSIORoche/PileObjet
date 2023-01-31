@@ -6,11 +6,11 @@ namespace MesOutils
     {
         static void Main(string[] args)
         {
-            TestePileVidePleine(5);
-            TestePileVidePleine(0);
-            TesteEmpiler(5);
+            //TestePileVidePleine(5);
+            //TestePileVidePleine(0);
+            //TesteEmpiler(5);
             //TesteEmpiler(2);
-            TesteEmpilerDepiler(5);
+            TesteEmpilerDepiler(1);
             Console.WriteLine("Fin du progamme");
             Console.ReadKey();
         }
