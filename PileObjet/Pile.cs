@@ -59,5 +59,10 @@ namespace MesOutils
             }
             throw new Exception("Impossible de dépiler,pile vide");
         }
+
+        public int AfficheSommet()
+        {
+            return this.elements[this.elements.Count - 1];
+        }
     }
 }

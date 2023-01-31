@@ -1,4 +1,5 @@
 ﻿using System;
+using Utilitaires;
 
 namespace MesOutils
 {
@@ -10,7 +11,9 @@ namespace MesOutils
             //TestePileVidePleine(0);
             //TesteEmpiler(5);
             //TesteEmpiler(2);
-            TesteEmpilerDepiler(1);
+            //TesteEmpilerDepiler(0);
+            //TestNbSaisi();
+            Console.WriteLine(Convertir(10,10,16));
             Console.WriteLine("Fin du progamme");
             Console.ReadKey();
         }
@@ -72,5 +75,45 @@ namespace MesOutils
                 Console.WriteLine(ex.Message);
             }
         }
+
+        static void TestNbSaisi()
+        {
+            int nbSaisi = Utilitaire.SaisirNb();
+            Console.WriteLine($"Nombre saisi : {nbSaisi}");
+            nbSaisi = Utilitaire.SaisirNb(10);
+            Console.WriteLine($"Nombre saisi : {nbSaisi}");
+            nbSaisi = Utilitaire.SaisirNb(10,30);
+            Console.WriteLine($"Nombre saisi : {nbSaisi}");
+        }
+        static string Convertir(int pNbElements, int pNbAConvertir, int pNewbase)
+        {
+            Pile unePile = new Pile(pNbElements);
+            int a = pNbAConvertir;
+            int r;
+            string resultat = "";
+
+            while (a > 0)
+            {
+                r = a % pNewbase;
+                unePile.Empiler(r);
+                a /= pNewbase;
+            }
+            string alpha = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+            while (!unePile.PileVide())
+            {
+                //if ((int)unePile.tabEle[unePile.tabElem.Count - 1] > 9)
+                if (unePile.AfficheSommet()>9)
+                {
+                    int alte = ((int)unePile.Depiler() % pNewbase) - 10;
+                    resultat += alpha[alte];
+                }
+                else
+                {
+                    resultat += unePile.Depiler().ToString();
+                }
+            }
+            return resultat;
+        }
+
     }
 }
