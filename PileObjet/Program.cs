@@ -20,7 +20,7 @@ namespace MesOutils
 
         static void TestePileVidePleine(int nbElements)
         {
-            Pile unePile = new Pile(10);
+            Pile<int> unePile = new Pile<int>(10);
             if (unePile.PileVide())
             {
                 Console.WriteLine("la pile est vide");

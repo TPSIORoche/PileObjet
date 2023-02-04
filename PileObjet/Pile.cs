@@ -9,22 +9,16 @@ namespace MesOutils
     /// On ajoute après le dernier élément ajouté
     /// On retire toujours le dernier élément ajouté
     /// </summary>
-    class Pile
+    class Pile<T>
     {
-        /// <summary>
-        /// Nombre maximum d'élements de la Pile
-        /// </summary>
-        private int nbMaxElt;
-
         /// <summary>
         /// Liste contenant les élements de la Pile
         /// </summary>
-        private List<int> elements;
+        private List<T> elements;
 
-        public Pile(int nbMaxElt)
+        public Pile()
         {
-            this.nbMaxElt = nbMaxElt;
-            this.elements = new List<int>();
+            this.elements = new List<T>();
         }
 
         public bool PileVide()
@@ -32,37 +26,24 @@ namespace MesOutils
             return this.elements.Count == 0;
         }
 
-        public bool PilePleine()
-        {
-            return this.elements.Count - 1 == this.nbMaxElt;
-        }
+        public int Count { get => this.elements.Count; }
 
-        public void Empiler(int nb)
+
+        /// <param name="valeur">Valeur à empiler</param>
+        public void Empiler(T valeur)
         {
-            if (!(this.PilePleine()))
-            {
-                this.elements.Add(nb);
-            }
-            else
-            {
-                throw new Exception("Impossible d'empiler,pile pleine");
-            }
+            this.elements.Add(valeur);
         }
 
         public int Depiler()
         {
             if (!(this.PileVide()))
             {
-                int res = (int)this.elements[elements.Count - 1];
+                var res = this.elements[elements.Count - 1];
                 this.elements.RemoveAt(this.elements.Count - 1);
                 return res;
             }
             throw new Exception("Impossible de dépiler,pile vide");
-        }
-
-        public int AfficheSommet()
-        {
-            return this.elements[this.elements.Count - 1];
         }
     }
 }
