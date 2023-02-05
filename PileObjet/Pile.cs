@@ -5,7 +5,7 @@ using System.Text;
 namespace MesOutils
 {
     /// <summary>
-    /// Pile contenant pouvant contenir des entiers
+    /// Pile contenant pouvant tout
     /// On ajoute après le dernier élément ajouté
     /// On retire toujours le dernier élément ajouté
     /// </summary>
@@ -35,7 +35,7 @@ namespace MesOutils
             this.elements.Add(valeur);
         }
 
-        public int Depiler()
+        public T Depiler()
         {
             if (!(this.PileVide()))
             {
