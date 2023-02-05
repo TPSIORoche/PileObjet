@@ -102,5 +102,21 @@ namespace PileObjet.Tests
                 Console.WriteLine(ex.Message);
             }
         }
+
+        internal static void TesteInversePhrase()
+        {
+            try
+            {
+                string phrase = UtilitaireAPI.RecupereLoremIpsum(3);
+                Console.WriteLine("\n\nphrase: ");
+                Console.WriteLine(phrase);
+                String phraseInversee = UtilitaireAPI.InversePhrase(phrase);
+                Console.WriteLine(phraseInversee);
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+        }
     }
 }

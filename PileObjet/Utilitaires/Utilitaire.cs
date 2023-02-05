@@ -121,5 +121,21 @@ namespace Utilitaires
             }
             return resultat;
         }
+
+        public static string InversePhrase(string phrase)
+        {
+            Pile<string> maPile = new Pile<string>();
+            var tab = phrase.Split(' ');
+            foreach (string mot in tab)
+            {
+                maPile.Empiler(mot);
+            }
+            string message = "";
+            while (!maPile.PileVide())
+            {
+                message += " " + maPile.Depiler();
+            }
+            return message;
+        }
     }
 }
