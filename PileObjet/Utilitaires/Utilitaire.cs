@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using MesOutils;
 
 namespace Utilitaires
 {
@@ -80,6 +81,45 @@ namespace Utilitaires
                 catch (FormatException) { }
             } while (nb <= pMin || nb >= pMax);
             return nb;
+        }
+
+        public static string Convertir(int pNbAConvertir, int pNewbase)
+        {
+            if (pNbAConvertir <= 0)
+            {
+                throw new Exception("Le nombre à convertir doit être strictement positif");
+            }
+            if (pNewbase<2 || pNewbase>16)
+            {
+                throw new Exception("La nouvelle base doit être comprise entre 2 et 16");
+            }
+            Pile<int> unePile = new Pile<int>();
+            int a = pNbAConvertir;
+            int r;
+            string resultat = "";
+
+            while (a > 0)
+            {
+                r = a % pNewbase;
+                unePile.Empiler(r);
+                a /= pNewbase;
+            }
+            string alpha = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+            while (!unePile.PileVide())
+            {
+                //if ((int)unePile.tabEle[unePile.tabElem.Count - 1] > 9)
+                int tempo = unePile.Depiler();
+                if (tempo > 9)
+                {
+                    int alte = (tempo % pNewbase) - 10;
+                    resultat += alpha[alte];
+                }
+                else
+                {
+                    resultat += tempo.ToString();
+                }
+            }
+            return resultat;
         }
     }
 }
